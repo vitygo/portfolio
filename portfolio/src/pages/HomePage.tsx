@@ -5,7 +5,7 @@ import Projects from '@/sections/Projects/Projects'
 import Experience from '@/sections/Experience/Experience'
 import Stack from '@/sections/Stack/Stack'
 import Community from '@/sections/Community/Community'
-// import Contact from '@/sections/Contact/Contact'
+import Contact from '@/sections/Contact/Contact'
 
 function HomePage() {
   return (
@@ -17,7 +17,7 @@ function HomePage() {
         <Experience />
         <Stack />
         <Community />
-        {/* <Contact /> */}
+        <Contact />
       </main>
       <Footer />
     </>

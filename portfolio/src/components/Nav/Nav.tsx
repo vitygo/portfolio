@@ -15,7 +15,7 @@ function Nav() {
 
       <div className={styles.cta}>
         <a href="#contact" className={styles.btnOutline}>Say hello</a>
-        <a href="mailto:vitygocanal@gamil.com" className={styles.btnPrimary}>Hire me</a>
+        <a href="mailto:vitygocanal@gmail.com" className={styles.btnPrimary}>Hire me</a>
       </div>
     </nav>
   )
