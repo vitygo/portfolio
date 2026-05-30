@@ -9,6 +9,7 @@ import Contact from '@/sections/Contact/Contact'
 import useReveal from '@/hooks/useReveal'
 import CursorTrail from '@/components/CursorTrail/CursorTrail'
 import Noise from '@/components/Noise/Noise'
+import GitHub from '@/sections/GitHub/GitHub'
 
 function HomePage() {
     useReveal()
@@ -22,6 +23,7 @@ function HomePage() {
         <Projects />
         <Experience />
         <Stack />
+        <GitHub />
         <Community />
         <Contact />
       </main>
