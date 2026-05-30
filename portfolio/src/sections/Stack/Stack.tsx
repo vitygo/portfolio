@@ -1,4 +1,3 @@
-// src/sections/Stack/Stack.tsx
 import styles from './Stack.module.css'
 
 type StackItem = {
@@ -62,13 +61,13 @@ function Stack() {
   return (
     <section id="stack" className={styles.section}>
       <div className={styles.inner}>
-        <p className={styles.label}>Tools of trade</p>
-        <h2 className={styles.title}>Tech stack.</h2>
-        <p className={styles.subtitle}>
+        <p className={`${styles.label} reveal`}>Tools of trade</p>
+        <h2 className={`${styles.title} reveal`}>Tech stack.</h2>
+        <p className={`${styles.subtitle} reveal`}>
           The technologies I reach for first — and the depth I've built over time.
         </p>
 
-        <div className={styles.categories}>
+        <div className={`${styles.categories} reveal`}>
           {stack.map((cat) => (
             <div key={cat.label} className={styles.category}>
               <p className={styles.catLabel}>{cat.label}</p>
@@ -84,7 +83,7 @@ function Stack() {
           ))}
         </div>
 
-        <div className={styles.banner}>
+        <div className={`${styles.banner} reveal`}>
           <p className={styles.bannerText}>
             Always learning. Currently exploring AI integration and full-stack architecture.
           </p>

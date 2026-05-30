@@ -4,16 +4,16 @@ function Projects() {
   return (
     <section id="projects" className={styles.section}>
       <div className={styles.inner}>
-        <p className={styles.label}>Selected work</p>
-        <h2 className={styles.title}>Things I've built.</h2>
-        <p className={styles.subtitle}>
+        <p className={`${styles.label} reveal`}>Selected work</p>
+        <h2 className={`${styles.title} reveal`}>Things I've built.</h2>
+        <p className={`${styles.subtitle} reveal`}>
           Full-stack pet projects shipped from zero — real users, real feedback.
         </p>
 
         <div className={styles.grid}>
 
           {/* Featured — placeholder */}
-          <article className={styles.cardFeatured}>
+          <article className={`${styles.cardFeatured} reveal`}>
             <div className={styles.featuredVisual}>01</div>
             <div className={styles.featuredBody}>
               <div>
@@ -39,10 +39,10 @@ function Projects() {
           </article>
 
           {/* Card 2 — Highlingua */}
-          <article className={styles.card}>
+          <article className={`${styles.card} reveal`}>
             <p className={styles.cardNumber}>02</p>
             <div className={styles.cardIcon}>
-              <img alt="" src="/highlingua.png"/>
+              <img alt="" src="/highlingua.png" />
             </div>
             <h3 className={styles.cardTitle}>Highlingua — AI Language Learning</h3>
             <p className={styles.cardDesc}>
@@ -71,10 +71,10 @@ function Projects() {
           </article>
 
           {/* Card 3 — Kanban */}
-          <article className={styles.card}>
+          <article className={`${styles.card} reveal`}>
             <p className={styles.cardNumber}>03</p>
             <div className={styles.cardIcon}>
-            <img alt="" src="/kanbloom-white.png"/>
+              <img alt="" src="/kanbloom-white.png" />
             </div>
             <h3 className={styles.cardTitle}>Kanban Board</h3>
             <p className={styles.cardDesc}>

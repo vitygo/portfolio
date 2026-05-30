@@ -1,22 +1,22 @@
-// src/sections/Contact/Contact.tsx
 import styles from './Contact.module.css'
 
 function Contact() {
   return (
     <section id="contact" className={styles.section}>
       <div className={styles.inner}>
-        <p className={styles.label}>Contact</p>
-        <h2 className={styles.headline}>
+        <p className={`${styles.label} reveal`}>Contact</p>
+        <h2 className={`${styles.headline} reveal`}>
           Let's make something worth building.
         </h2>
 
-        <div className={styles.links}>
+        <div className={`${styles.links} reveal`}>
           <a
             href="mailto:vitygocanal@gmail.com"
             className={styles.btnPrimary}
           >
             vitygocanal@gmail.com
           </a>
+          
           <a
             href="https://github.com/vitygo"
             target="_blank"

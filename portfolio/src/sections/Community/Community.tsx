@@ -4,16 +4,15 @@ function Community() {
   return (
     <section id="community" className={styles.section}>
       <div className={styles.inner}>
-        <p className={styles.label}>Community</p>
-        <h2 className={styles.title}>Beyond the code.</h2>
-        <p className={styles.subtitle}>
+        <p className={`${styles.label} reveal`}>Community</p>
+        <h2 className={`${styles.title} reveal`}>Beyond the code.</h2>
+        <p className={`${styles.subtitle} reveal`}>
           Tech is built by people. I show up, connect, and learn in the open.
         </p>
 
         <div className={styles.grid}>
 
-          {/* Featured — Meet.js */}
-          <div className={`${styles.card} ${styles.cardFeatured}`}>
+          <div className={`${styles.card} ${styles.cardFeatured} reveal`}>
             <div className={styles.icon}>
               <i className="ti ti-users" aria-hidden="true" />
             </div>
@@ -28,8 +27,7 @@ function Community() {
             </div>
           </div>
 
-          {/* Conferences */}
-          <div className={styles.card}>
+          <div className={`${styles.card} reveal`}>
             <div className={styles.icon}>
               <i className="ti ti-microphone" aria-hidden="true" />
             </div>
@@ -44,8 +42,7 @@ function Community() {
             </div>
           </div>
 
-          {/* Learning */}
-          <div className={styles.card}>
+          <div className={`${styles.card} reveal`}>
             <div className={styles.icon}>
               <i className="ti ti-seeding" aria-hidden="true" />
             </div>
@@ -60,8 +57,7 @@ function Community() {
             </div>
           </div>
 
-          {/* CTA card */}
-          <div className={`${styles.card} ${styles.cardCta}`}>
+          <div className={`${styles.card} ${styles.cardCta} reveal`}>
             <div>
               <p className={styles.ctaLabel}>Want to connect?</p>
               <h3 className={styles.ctaTitle}>

@@ -6,8 +6,10 @@ import Experience from '@/sections/Experience/Experience'
 import Stack from '@/sections/Stack/Stack'
 import Community from '@/sections/Community/Community'
 import Contact from '@/sections/Contact/Contact'
+import useReveal from '@/hooks/useReveal'
 
 function HomePage() {
+    useReveal()
   return (
     <>
       <Nav />
