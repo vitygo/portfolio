@@ -121,3 +121,22 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--canvas-night);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--hairline-dark);
+    border-radius: var(--pill);
+    transition: background 0.2s;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--aloe-10);
+  }
