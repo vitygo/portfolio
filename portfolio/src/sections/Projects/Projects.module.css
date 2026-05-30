@@ -1,0 +1,204 @@
+.section {
+    background: var(--canvas-night);
+    padding: 8rem 0;
+  }
+  
+  .inner {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  
+  .label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.72px;
+    color: var(--shade-50);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--shade-60);
+  }
+  
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--on-dark);
+    margin-bottom: 0.75rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    font-weight: 420;
+    color: var(--shade-50);
+    line-height: 1.6;
+    max-width: 35rem;
+    margin-bottom: 4rem;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  
+  .cardFeatured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--surface-elevated-dark);
+    border: 1px solid var(--hairline-dark);
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  
+  .cardFeatured:hover {
+    background: #1a2f35;
+  }
+  
+  .featuredVisual {
+    min-height: 280px;
+    background: var(--canvas-night);
+    border-right: 1px solid var(--hairline-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5rem;
+    font-weight: 200;
+    color: var(--aloe-10);
+    font-family: var(--font-display);
+  }
+  
+  .featuredBody {
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card {
+    background: var(--canvas-night-elevated);
+    padding: 2.5rem;
+    border: 1px solid var(--hairline-dark);
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  
+  .card:hover {
+    background: #111;
+  }
+  
+  .cardNumber {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--shade-60);
+    letter-spacing: 0.6px;
+    margin-bottom: 2rem;
+  }
+  
+  .cardIcon {
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--shade-60);
+    margin-bottom: 1rem;
+  }
+  
+  .cardTitle {
+    font-family: var(--font-display);
+    font-size: 1.625rem;
+    font-weight: 400;
+    color: var(--on-dark);
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  
+  .cardDesc {
+    font-size: 0.875rem;
+    font-weight: 420;
+    color: var(--shade-50);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--pill);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--shade-40);
+    border: 1px solid var(--hairline-dark);
+  }
+  
+  .tagAloe {
+    background: var(--aloe-10);
+    color: #1a6b38;
+    border: none;
+  }
+  
+  .cardLinks {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .cardLink {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--shade-40);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    transition: color 0.2s;
+    align-self: flex-start;
+  }
+  
+  .cardLink:hover {
+    color: var(--on-dark);
+  }
+  
+  @media (max-width: 768px) {
+    .section {
+      padding: 5rem 0;
+    }
+  
+    .inner {
+      padding: 0 1.5rem;
+    }
+  
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .cardFeatured {
+      grid-template-columns: 1fr;
+    }
+  
+    .featuredVisual {
+      min-height: 160px;
+    }
+  }
