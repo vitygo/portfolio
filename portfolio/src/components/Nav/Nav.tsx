@@ -1,6 +1,31 @@
+import { useEffect, useState } from 'react'
 import styles from './Nav.module.css'
 
+const sections = ['projects', 'experience', 'stack', 'community']
+
 function Nav() {
+  const [active, setActive] = useState('')
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id)
+          }
+        })
+      },
+      { threshold: 0.4 }
+    )
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <nav className={styles.nav}>
       <div className={styles.logoWrap}>
@@ -12,10 +37,16 @@ function Nav() {
       </div>
 
       <ul className={styles.links}>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#stack">Stack</a></li>
-        <li><a href="#community">Community</a></li>
+        {sections.map((id) => (
+          <li key={id}>
+            <a
+              href={`#${id}`}
+              className={active === id ? styles.linkActive : ''}
+            >
+              {id.charAt(0).toUpperCase() + id.slice(1)}
+            </a>
+          </li>
+        ))}
       </ul>
 
       <div className={styles.cta}>

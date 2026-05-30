@@ -75,6 +75,21 @@
   .links a:hover {
     color: var(--on-dark);
   }
+  .linkActive {
+    color: var(--on-dark) !important;
+    position: relative;
+  }
+  
+  .linkActive::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--aloe-10);
+    border-radius: var(--pill);
+  }
   
   .cta {
     display: flex;

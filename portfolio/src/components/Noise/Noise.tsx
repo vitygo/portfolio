@@ -18,23 +18,24 @@ function Noise() {
     }
 
     function draw() {
-      const w = canvas!.width
-      const h = canvas!.height
-      const imageData = ctx!.createImageData(w, h)
-      const data = imageData.data
-
-      for (let i = 0; i < data.length; i += 4) {
-        const v = Math.random() * 255
-        data[i] = v
-        data[i + 1] = v
-        data[i + 2] = v
-        data[i + 3] = 18
+        const w = canvas!.width
+        const h = canvas!.height
+        const imageData = ctx!.createImageData(w, h)
+        const data = imageData.data
+      
+        for (let i = 0; i < data.length; i += 4) {
+          const v = Math.random() * 255
+          data[i] = v
+          data[i + 1] = v
+          data[i + 2] = v
+          data[i + 3] = 18
+        }
+      
+        ctx!.putImageData(imageData, 0, 0)
+        setTimeout(() => {
+          frame = requestAnimationFrame(draw)
+        }, 100)
       }
-
-      ctx!.putImageData(imageData, 0, 0)
-      frame = requestAnimationFrame(draw)
-    }
-
     resize()
     draw()
 
