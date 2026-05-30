@@ -165,6 +165,22 @@ function GitHub() {
           </div>
         </div>
       </div>
+      <div className={styles.floatingDots}>
+  {Array.from({ length: 60 }).map((_, i) => (
+    <div
+      key={i}
+      className={styles.floatDot}
+      style={{
+        width: `${Math.random() * 4 + 2}px`,
+        height: `${Math.random() * 4 + 2}px`,
+        opacity: Math.random() * 0.5 + 0.1,
+        animationDelay: `${Math.random() * 3}s`,
+        animationDuration: `${2 + Math.random() * 2}s`,
+        left: `${(i / 60) * 100}%`,
+      }}
+    />
+  ))}
+</div>
     </section>
   )
 }

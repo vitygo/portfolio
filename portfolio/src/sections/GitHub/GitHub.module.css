@@ -1,6 +1,39 @@
+
 .section {
     background: var(--canvas-night);
     padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+  
+  }
+  
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(193, 251, 212, 0.6) 30%,
+      rgba(193, 251, 212, 0.6) 70%,
+      transparent
+    );
+    z-index: 1;
+  }
+  
+  .section::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(193, 251, 212, 0.04), transparent);
+    pointer-events: none;
+    z-index: 0;
   }
   
   .inner {
@@ -143,4 +176,25 @@
       grid-template-columns: 1fr;
       justify-items: center;
     }
+  }
+  .floatingDots {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    pointer-events: none;
+  }
+  
+  .floatDot {
+    position: absolute;
+    bottom: 8px;
+    border-radius: 50%;
+    background: var(--aloe-10);
+    animation: floatUp 2s ease-in-out infinite;
+  }
+  
+  @keyframes floatUp {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50% { transform: translateY(-16px); opacity: 0.8; }
   }
