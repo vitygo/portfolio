@@ -11,6 +11,7 @@ import CursorTrail from '@/components/CursorTrail/CursorTrail'
 import Noise from '@/components/Noise/Noise'
 import GitHub from '@/sections/GitHub/GitHub'
 import BugSquash from '@/sections/BugSquash/BugSquash'
+import BackToTop from '@/components/BackToTop/BackToTop'
 
 
 
@@ -21,6 +22,7 @@ function HomePage() {
     <>
       <Nav />
       <CursorTrail />
+      <BackToTop />
       <Noise />
       <main>
         <Hero />
