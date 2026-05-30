@@ -213,7 +213,7 @@
   }
   @media (max-width: 768px) {
     .hero {
-      padding: 6rem 1.5rem 4.5rem;
+      padding: 7rem 1.5rem 4.5rem;
     }
   
     .layout {
@@ -234,11 +234,16 @@
     .scrollHint {
       right: 1.5rem;
     }
+    .timeMachine {
+        position: absolute;
+        top: 200px;
+    }
+        
   }
 
   .timeMachine {
     position: absolute;
-    top: 80px;
+    top: 100px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
