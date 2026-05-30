@@ -64,7 +64,7 @@ function Community() {
                 Let's meet at the next meetup or grab a coffee.
               </h3>
             </div>
-            <a href="mailto:your@email.com" className={styles.btn}>
+            <a href="mailto:vitygocanal@gmail.com" className={styles.btn}>
               Say hello
             </a>
           </div>

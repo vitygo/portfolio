@@ -36,7 +36,7 @@ function Experience() {
             </div>
           </div>
 
-          <a href="mailto:your@email.com" className={`${styles.cta} reveal`}>
+          <a href="mailto:vitygocanal@gmail.com" className={`${styles.cta} reveal`}>
             Give me a shot
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M3 8h10M9 4l4 4-4 4" />
