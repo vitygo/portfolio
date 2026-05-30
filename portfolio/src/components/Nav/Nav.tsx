@@ -1,10 +1,15 @@
-import { Link } from 'react-router-dom'
 import styles from './Nav.module.css'
 
 function Nav() {
   return (
     <nav className={styles.nav}>
-      <a href="#" className={styles.logo}>VK</a>
+      <div className={styles.logoWrap}>
+        <a href="#" className={styles.logo}>VK</a>
+        <span className={styles.badge}>
+          <span className={styles.badgeDot} />
+          Open to work
+        </span>
+      </div>
 
       <ul className={styles.links}>
         <li><a href="#projects">Projects</a></li>
