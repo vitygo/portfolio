@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styles from './TimeMachine.module.css'
 
 export type Era = 'modern' | 'flat' | 'web2' | 'early' | 'geocities'

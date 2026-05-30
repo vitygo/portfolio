@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import styles from './AsciiMobile.module.css'
 
 const GRID_COLS = 16
-const GRID_ROWS = 20
+
 
 const PATTERN = [
   [0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0],
