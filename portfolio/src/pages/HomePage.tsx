@@ -8,6 +8,7 @@ import Community from '@/sections/Community/Community'
 import Contact from '@/sections/Contact/Contact'
 import useReveal from '@/hooks/useReveal'
 import CursorTrail from '@/components/CursorTrail/CursorTrail'
+import Noise from '@/components/Noise/Noise'
 
 function HomePage() {
     useReveal()
@@ -15,6 +16,7 @@ function HomePage() {
     <>
       <Nav />
       <CursorTrail />
+      <Noise />
       <main>
         <Hero />
         <Projects />
