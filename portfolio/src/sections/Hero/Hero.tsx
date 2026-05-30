@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from './Hero.module.css'
 import AsciiMobile from './AsciiMobile'
 import useRipple from '@/hooks/useRipple'
+import useMagnetic from '@/hooks/useMagnetic'
 
 const FULL_TEXT = "Building things\nthat actually work."
 
@@ -9,6 +10,8 @@ function Hero() {
   const [displayed, setDisplayed] = useState('')
   const [done, setDone] = useState(false)
   const ripple = useRipple()
+  const btnPrimary = useMagnetic<HTMLAnchorElement>()
+  const btnOutline = useMagnetic<HTMLAnchorElement>()
 
   useEffect(() => {
     let i = 0
@@ -65,12 +68,14 @@ function Hero() {
               opacity: done ? 1 : 0,
             }}
           >
-             <a href="#projects" className={styles.btnPrimary} onMouseDown={ripple}>
+             {/* <a href="#projects" className={styles.btnPrimary} onMouseDown={ripple}>
                 View projects
             </a>
             <a href="#community" className={styles.btnOutline} onMouseDown={ripple}>
                 Community →
-            </a>
+            </a> */}
+            <a ref={btnPrimary} href="#projects" className={styles.btnPrimary} onMouseDown={ripple}>View projects</a>
+            <a ref={btnOutline} href="#community" className={styles.btnOutline} onMouseDown={ripple}>Community →</a>
           </div>
         </div>
 
