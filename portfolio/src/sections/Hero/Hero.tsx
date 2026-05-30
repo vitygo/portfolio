@@ -1,4 +1,5 @@
 import styles from './Hero.module.css'
+import AsciiMobile from './AsciiMobile'
 
 function Hero() {
   return (
@@ -6,17 +7,25 @@ function Hero() {
       <div className={styles.gridBg} />
       <div className={styles.glow} />
 
-      <div className={styles.content}>
-        <p className={`${styles.eyebrow} reveal`}>Frontend Engineer & Product Builder</p>
-        <h1 className={`${styles.headline} reveal`}>
-          Building things<br />that actually work.
-        </h1>
-        <p className={`${styles.sub} reveal`}>
-          I design and ship products at the intersection of engineering and craft — clean systems, thoughtful interfaces, and communities that outlast the hype.
-        </p>
-        <div className={`${styles.actions} reveal`}>
-          <a href="#projects" className={styles.btnPrimary}>View projects</a>
-          <a href="#community" className={styles.btnOutline}>Community →</a>
+      <div className={styles.layout}>
+        <div className={styles.content}>
+          <p className={`${styles.eyebrow} reveal`}>Viktor Kobylianskyi — Frontend Engineer</p>
+          <h1 className={`${styles.headline} reveal`}>
+            Building things<br />that actually work.
+          </h1>
+          <p className={`${styles.sub} reveal`}>
+          I build full-stack apps, co-host Meet.js Kraków, and ship things before they're perfect
+          </p>
+    
+       
+          <div className={`${styles.actions} reveal`}>
+            <a href="#projects" className={styles.btnPrimary}>View projects</a>
+            <a href="#community" className={styles.btnOutline}>Community →</a>
+          </div>
+        </div>
+
+        <div className={styles.asciiWrap}>
+          <AsciiMobile />
         </div>
       </div>
 

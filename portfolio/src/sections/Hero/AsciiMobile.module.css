@@ -1,0 +1,23 @@
+.wrap {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 6px;
+    padding: 2rem 0;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  .dot {
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+  
+  .dotActive {
+    background: var(--aloe-10);
+    opacity: 0.6;
+  }
+  
+  .dotInactive {
+    background: transparent;
+  }
