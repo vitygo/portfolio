@@ -77,6 +77,24 @@
       0 1px 2px rgba(255, 255, 255, 0.05),
       inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
+
+  [data-theme="light"] {
+    --canvas-night: #ffffff;
+    --canvas-night-elevated: #f4f4f0;
+    --canvas-light: #000000;
+    --canvas-cream: #fbfbf5;
+    --surface-elevated-dark: #e4e4e7;
+    --on-dark: #000000;
+    --ink: #ffffff;
+    --hairline-dark: #e4e4e7;
+    --shade-30: #3f3f46;
+    --shade-40: #52525b;
+    --shade-50: #71717a;
+    --shade-60: #a1a1aa;
+    --shade-70: #d4d4d8;
+    --aloe-10: #097a30;
+    --link-mint: #0f6e56;
+  }
   
   html {
     scroll-behavior: smooth;

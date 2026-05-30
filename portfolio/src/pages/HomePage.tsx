@@ -10,6 +10,7 @@ import useReveal from '@/hooks/useReveal'
 import CursorTrail from '@/components/CursorTrail/CursorTrail'
 import Noise from '@/components/Noise/Noise'
 import GitHub from '@/sections/GitHub/GitHub'
+import BugSquash from '@/sections/BugSquash/BugSquash'
 
 function HomePage() {
     useReveal()
@@ -24,6 +25,7 @@ function HomePage() {
         <Experience />
         <Stack />
         <GitHub />
+        <BugSquash />
         <Community />
         <Contact />
       </main>

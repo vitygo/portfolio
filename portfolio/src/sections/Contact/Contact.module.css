@@ -103,3 +103,23 @@
       margin-bottom: 4rem;
     }
   }
+
+  .visitors {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 420;
+    color: var(--shade-50);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.3px;
+  }
+  
+  .visitorsDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--aloe-10);
+    animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
