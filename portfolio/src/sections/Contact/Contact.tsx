@@ -1,6 +1,17 @@
+import { toast } from 'sonner'
 import styles from './Contact.module.css'
 
+const EMAIL = 'vitygocanal@gmail.com'
+
 function Contact() {
+  function copyEmail() {
+    navigator.clipboard.writeText(EMAIL)
+    toast.success('Email copied!', {
+      description: EMAIL,
+      duration: 2500,
+    })
+  }
+
   return (
     <section id="contact" className={styles.section}>
       <div className={styles.inner}>
@@ -10,13 +21,12 @@ function Contact() {
         </h2>
 
         <div className={`${styles.links} reveal`}>
-          <a
-            href="mailto:vitygocanal@gmail.com"
+          <button
+            onClick={copyEmail}
             className={styles.btnPrimary}
           >
-            vitygocanal@gmail.com
-          </a>
-          
+            {EMAIL}
+          </button>
           <a
             href="https://github.com/vitygo"
             target="_blank"
