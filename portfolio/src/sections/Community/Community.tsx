@@ -1,6 +1,9 @@
 import styles from './Community.module.css'
+import useRipple from '@/hooks/useRipple'
 
 function Community() {
+    const ripple = useRipple()
+
   return (
     <section id="community" className={styles.section}>
       <div className={styles.inner}>
@@ -64,7 +67,7 @@ function Community() {
                 Let's meet at the next meetup or grab a coffee.
               </h3>
             </div>
-            <a href="mailto:vitygocanal@gmail.com" className={styles.btn}>
+            <a href="#contact" className={styles.btn} onMouseDown={ripple}>
               Say hello
             </a>
           </div>

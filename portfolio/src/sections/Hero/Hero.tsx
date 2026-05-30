@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import styles from './Hero.module.css'
 import AsciiMobile from './AsciiMobile'
+import useRipple from '@/hooks/useRipple'
 
 const FULL_TEXT = "Building things\nthat actually work."
 
 function Hero() {
   const [displayed, setDisplayed] = useState('')
   const [done, setDone] = useState(false)
+  const ripple = useRipple()
 
   useEffect(() => {
     let i = 0
@@ -63,8 +65,12 @@ function Hero() {
               opacity: done ? 1 : 0,
             }}
           >
-            <a href="#projects" className={styles.btnPrimary}>View projects</a>
-            <a href="#community" className={styles.btnOutline}>Community →</a>
+             <a href="#projects" className={styles.btnPrimary} onMouseDown={ripple}>
+                View projects
+            </a>
+            <a href="#community" className={styles.btnOutline} onMouseDown={ripple}>
+                Community →
+            </a>
           </div>
         </div>
 

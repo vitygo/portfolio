@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import styles from './Nav.module.css'
+import useRipple from '@/hooks/useRipple'
 
 const sections = ['projects', 'experience', 'stack', 'community']
 
 function Nav() {
   const [active, setActive] = useState('')
+  const ripple = useRipple()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,8 +52,8 @@ function Nav() {
       </ul>
 
       <div className={styles.cta}>
-        <a href="#contact" className={styles.btnOutline}>Say hello</a>
-        <a href="mailto:vitygocanal@gmail.com" className={styles.btnPrimary}>Hire me</a>
+        <a href="#contact" className={styles.btnOutline} onMouseDown={ripple}>Say hello</a>
+        <a href="mailto:vitygocanal@gmail.com" className={styles.btnPrimary} onMouseDown={ripple}>Hire me</a>
       </div>
     </nav>
   )

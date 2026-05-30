@@ -1,9 +1,11 @@
 import { toast } from 'sonner'
 import styles from './Contact.module.css'
+import useRipple from '@/hooks/useRipple'
 
 const EMAIL = 'vitygocanal@gmail.com'
 
 function Contact() {
+    const ripple = useRipple()
   function copyEmail() {
     navigator.clipboard.writeText(EMAIL)
     toast.success('Email copied!', {
@@ -24,6 +26,7 @@ function Contact() {
           <button
             onClick={copyEmail}
             className={styles.btnPrimary}
+            onMouseDown={ripple}
           >
             {EMAIL}
           </button>
@@ -32,6 +35,7 @@ function Contact() {
             target="_blank"
             rel="noreferrer"
             className={styles.btnOutline}
+            onMouseDown={ripple}
           >
             <i className="ti ti-brand-github" aria-hidden="true" />
             GitHub
@@ -41,6 +45,7 @@ function Contact() {
             target="_blank"
             rel="noreferrer"
             className={styles.btnOutline}
+            onMouseDown={ripple}
           >
             <i className="ti ti-brand-linkedin" aria-hidden="true" />
             LinkedIn

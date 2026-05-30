@@ -1,4 +1,5 @@
 import styles from './Stack.module.css'
+import useRipple from '@/hooks/useRipple'
 
 type StackItem = {
   name: string
@@ -58,6 +59,7 @@ function Dots({ level }: { level: number }) {
 }
 
 function Stack() {
+    const ripple = useRipple()
   return (
     <section id="stack" className={styles.section}>
       <div className={styles.inner}>
@@ -87,7 +89,7 @@ function Stack() {
           <p className={styles.bannerText}>
             Always learning. Currently exploring AI integration and full-stack architecture.
           </p>
-          <a href="#contact" className={styles.bannerBtn}>
+          <a href="#contact" className={styles.bannerBtn} onMouseDown={ripple}>
             Let's build together
           </a>
         </div>
