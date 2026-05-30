@@ -87,7 +87,7 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   }
-  
+
   .sub {
     font-size: 1.25rem;
     font-weight: 420;
@@ -233,5 +233,70 @@
   
     .scrollHint {
       right: 1.5rem;
+    }
+  }
+
+  .timeMachine {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 280px;
+  }
+  
+  .tmLabels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 10px;
+    color: var(--shade-60);
+    font-family: var(--font-mono);
+    letter-spacing: 0.3px;
+  }
+  
+  .tmSlider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 2px;
+    background: var(--hairline-dark);
+    border-radius: 99px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .tmSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--aloe-10);
+    cursor: pointer;
+    border: 2px solid var(--canvas-night);
+    box-shadow: 0 0 8px rgba(193, 251, 212, 0.5);
+    transition: transform 0.2s;
+  }
+  
+  .tmSlider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
+  
+  .tmLabel {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--aloe-10);
+    letter-spacing: 0.3px;
+  }
+  
+  @media (max-width: 768px) {
+    .timeMachine {
+      width: 200px;
+      top: 70px;
     }
   }

@@ -164,7 +164,7 @@
     gap: 1.5rem;
     flex-wrap: wrap;
   }
-  
+
   .cardLink {
     font-size: 0.8125rem;
     font-weight: 500;
@@ -202,3 +202,5 @@
       min-height: 160px;
     }
   }
+
+  
