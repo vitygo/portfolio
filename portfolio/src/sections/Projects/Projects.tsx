@@ -7,7 +7,7 @@ function Projects() {
         <p className={`${styles.label} reveal`}>Selected work</p>
         <h2 className={`${styles.title} reveal`}>Things I've built.</h2>
         <p className={`${styles.subtitle} reveal`}>
-          Full-stack pet projects shipped from zero — real users, real feedback.
+        End-to-end full-stack products: from conceptual ideas to fully functional, live applications
         </p>
 
         <div className={styles.grid}>
@@ -55,13 +55,13 @@ function Projects() {
               <span className={styles.tag}>PostgreSQL</span>
             </div>
             <div className={styles.cardLinks}>
-              <a href="https://lnkd.in/e_HJkpdR" target="_blank" rel="noreferrer" className={styles.cardLink}>
+              <a href="https://highlingua-api.onrender.com/" target="_blank" rel="noreferrer" className={styles.cardLink}>
                 Live demo
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M2 10 10 2M4 2h6v6" />
                 </svg>
               </a>
-              <a href="https://lnkd.in/eEN4YNgz" target="_blank" rel="noreferrer" className={styles.cardLink}>
+              <a href="https://github.com/vitygo/highlingua" target="_blank" rel="noreferrer" className={styles.cardLink}>
                 GitHub
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M2 10 10 2M4 2h6v6" />
@@ -87,13 +87,13 @@ function Projects() {
               <span className={styles.tag}>PostgreSQL</span>
             </div>
             <div className={styles.cardLinks}>
-              <a href="https://lnkd.in/eD_sbFmG" target="_blank" rel="noreferrer" className={styles.cardLink}>
+              <a href="https://kanban-web-moz5.onrender.com/" target="_blank" rel="noreferrer" className={styles.cardLink}>
                 Live demo
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M2 10 10 2M4 2h6v6" />
                 </svg>
               </a>
-              <a href="https://lnkd.in/ednynYMc" target="_blank" rel="noreferrer" className={styles.cardLink}>
+              <a href="https://github.com/vitygo/kanban-app" target="_blank" rel="noreferrer" className={styles.cardLink}>
                 GitHub
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M2 10 10 2M4 2h6v6" />
