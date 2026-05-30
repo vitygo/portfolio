@@ -12,6 +12,9 @@ import Noise from '@/components/Noise/Noise'
 import GitHub from '@/sections/GitHub/GitHub'
 import BugSquash from '@/sections/BugSquash/BugSquash'
 
+
+
+
 function HomePage() {
     useReveal()
   return (
