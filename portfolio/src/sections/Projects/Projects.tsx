@@ -14,13 +14,17 @@ function Projects() {
 
           {/* Featured — placeholder */}
           <article className={`${styles.cardFeatured} reveal`}>
-            <div className={styles.featuredVisual}>01</div>
+            <div className={styles.featuredVisual}><div className={styles.cardIcon}>
+              <img alt="" src="/uiseal.png" />
+            </div></div>
             <div className={styles.featuredBody}>
               <div>
                 <p className={styles.cardNumber}>Featured project</p>
-                <h3 className={styles.cardTitle}>Project Name — Coming Soon</h3>
+                <h3 className={styles.cardTitle}>uiseal — design-system linter</h3>
                 <p className={styles.cardDesc}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                  Developed an AST-based design-system lint engine (@uiseal/core) to enforce design tokens and component usage rules across JSX/TSX and CSS/PostCSS files.
+Built a VS Code extension providing real-time inline diagnostics, violation panels, and workspace-wide scanning.
+Architected a modular ecosystem including core engine, CLI tool, VS Code extension
                 </p>
                 <div className={styles.tags}>
                   <span className={`${styles.tag} ${styles.tagAloe}`}>In progress</span>
@@ -29,12 +33,14 @@ function Projects() {
                   <span className={styles.tag}>Node.js</span>
                 </div>
               </div>
-              <a href="#" className={styles.cardLink}>
-                Coming soon
+              <div className={styles.cardLinks}>
+              <a href="https://github.com/vitygo/highlingua" target="_blank" rel="noreferrer" className={styles.cardLink}>
+                GitHub
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M2 10 10 2M4 2h6v6" />
                 </svg>
               </a>
+            </div>
             </div>
           </article>
 

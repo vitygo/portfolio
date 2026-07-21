@@ -13,6 +13,8 @@ const REPOS = [
   { name: 'highlingua', color: '#c1fbd4', url: 'https://github.com/vitygo/highlingua' },
   { name: 'kanban-app', color: '#40b368', url: 'https://github.com/vitygo/kanban-app' },
   { name: 'portfolio', color: '#2d7a4a', url: 'https://github.com/vitygo/portfolio' },
+  { name: 'uiseal-engine', color: '#2d7a4a', url: 'https://github.com/vitygo/uiseal-engine' },
+  { name: 'recruiting-App', color: '#15532d', url: 'https://github.com/vitygo/Recruiting-App' },
 ]
 
 const SIZE = 200
