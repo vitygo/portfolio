@@ -1,113 +1,247 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
+import type { KeyboardEvent as ReactKeyboardEvent, MouseEvent as ReactMouseEvent } from 'react'
+import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion'
 import styles from './Projects.module.css'
+import ProjectCard from './ProjectCard'
+import { projects } from './projects.data'
+import useCarousel from '@/hooks/useCarousel'
+import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion'
+
+const COUNT = projects.length
 
 function Projects() {
+  const reducedMotion = usePrefersReducedMotion()
+
+  const {
+    viewportRef,
+    trackRef,
+    x,
+    progress,
+    activeIndex,
+    slideWidth,
+    goTo,
+    onKeyDown,
+    onDragStart,
+    onDragEnd,
+    dragConstraints,
+  } = useCarousel({ count: COUNT, reducedMotion })
+
+  // Reduced-motion fallback: a native scroll-snap track. The active card is
+  // whichever one is most visible inside it.
+  const cardRefs = useRef<(HTMLElement | null)[]>([])
+  const [staticActive, setStaticActive] = useState(0)
+
+  useEffect(() => {
+    if (!reducedMotion) return
+    const root = viewportRef.current
+    if (!root) return
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const mostVisible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (!mostVisible) return
+        const idx = cardRefs.current.findIndex((el) => el === mostVisible.target)
+        if (idx !== -1) setStaticActive(idx)
+      },
+      { root, threshold: [0.5, 0.75, 1] }
+    )
+
+    cardRefs.current.forEach((el) => el && io.observe(el))
+    return () => io.disconnect()
+  }, [reducedMotion, viewportRef])
+
+  const active = reducedMotion ? staticActive : activeIndex
+
+  const handleGoTo = useCallback(
+    (index: number) => {
+      const clamped = Math.min(COUNT - 1, Math.max(0, index))
+      if (reducedMotion) {
+        cardRefs.current[clamped]?.scrollIntoView({ inline: 'center', block: 'nearest' })
+      } else {
+        goTo(clamped)
+      }
+    },
+    [reducedMotion, goTo]
+  )
+
+  const handleProgressClick = useCallback(
+    (e: ReactMouseEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect()
+      const fraction = (e.clientX - rect.left) / rect.width
+      handleGoTo(Math.round(fraction * (COUNT - 1)))
+    },
+    [handleGoTo]
+  )
+
+  const handleProgressKeyDown = useCallback(
+    (e: ReactKeyboardEvent<HTMLDivElement>) => {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault()
+        handleGoTo(active + 1)
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault()
+        handleGoTo(active - 1)
+      }
+    },
+    [handleGoTo, active]
+  )
+
+  // Custom "Drag" / "View →" cursor — desktop pointer only.
+  const [isTouch] = useState(() => window.matchMedia('(pointer: coarse)').matches)
+  const showCustomCursor = !isTouch && !reducedMotion
+  const [cursorVisible, setCursorVisible] = useState(false)
+  const [cursorLabel, setCursorLabel] = useState<'drag' | 'view'>('drag')
+  const cursorX = useMotionValue(0)
+  const cursorY = useMotionValue(0)
+  const cursorSpringX = useSpring(cursorX, { stiffness: 300, damping: 30 })
+  const cursorSpringY = useSpring(cursorY, { stiffness: 300, damping: 30 })
+
+  const handlePointerMove = useCallback(
+    (e: ReactMouseEvent) => {
+      cursorX.set(e.clientX)
+      cursorY.set(e.clientY)
+    },
+    [cursorX, cursorY]
+  )
+
   return (
-    <section id="projects" className={styles.section}>
+    <section id="projects" className={styles.section} aria-labelledby="projects-title">
+      <div className={styles.grainOverlay} aria-hidden="true">
+        <svg width="100%" height="100%">
+          <filter id="projectsGrain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#projectsGrain)" />
+        </svg>
+      </div>
+
       <div className={styles.inner}>
-        <p className={`${styles.label} reveal`}>Selected work</p>
-        <h2 className={`${styles.title} reveal`}>Things I've built.</h2>
-        <p className={`${styles.subtitle} reveal`}>
-        End-to-end full-stack products: from conceptual ideas to fully functional, live applications
-        </p>
-
-        <div className={styles.grid}>
-
-          {/* Featured — placeholder */}
-          <article className={`${styles.cardFeatured} reveal`}>
-            <div className={styles.featuredVisual}><div className={styles.cardIcon}>
-              <img alt="" src="/uiseal.png" />
-            </div></div>
-            <div className={styles.featuredBody}>
-              <div>
-                <p className={styles.cardNumber}>Featured project</p>
-                <h3 className={styles.cardTitle}>uiseal — design-system linter</h3>
-                <p className={styles.cardDesc}>
-                  Developed an AST-based design-system lint engine (@uiseal/core) to enforce design tokens and component usage rules across JSX/TSX and CSS/PostCSS files.
-Built a VS Code extension providing real-time inline diagnostics, violation panels, and workspace-wide scanning.
-Architected a modular ecosystem including core engine, CLI tool, VS Code extension
-                </p>
-                <div className={styles.tags}>
-                  <span className={`${styles.tag} ${styles.tagAloe}`}>In progress</span>
-                  <span className={styles.tag}>React</span>
-                  <span className={styles.tag}>TypeScript</span>
-                  <span className={styles.tag}>Node.js</span>
-                </div>
-              </div>
-              <div className={styles.cardLinks}>
-              <a href="https://github.com/vitygo/highlingua" target="_blank" rel="noreferrer" className={styles.cardLink}>
-                GitHub
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M2 10 10 2M4 2h6v6" />
-                </svg>
-              </a>
-            </div>
-            </div>
-          </article>
-
-          {/* Card 2 — Highlingua */}
-          <article className={`${styles.card} reveal`}>
-            <p className={styles.cardNumber}>02</p>
-            <div className={styles.cardIcon}>
-              <img alt="" src="/highlingua.png" />
-            </div>
-            <h3 className={styles.cardTitle}>Highlingua — AI Language Learning</h3>
-            <p className={styles.cardDesc}>
-              AI-powered flashcard app with 4 quiz modes, spaced repetition, activity calendar, and learning stats. Flashcards generated by Gemini 2.5 Flash.
+        <div className={styles.headerRow}>
+          <div>
+            <p className={`${styles.label} reveal`}>Selected work</p>
+            <h2 id="projects-title" className={`${styles.title} reveal`}>
+              Things I&apos;ve built.
+            </h2>
+            <p className={`${styles.subtitle} reveal`}>
+              End-to-end full-stack products: from conceptual ideas to fully functional, live applications
             </p>
-            <div className={styles.tags}>
-              <span className={`${styles.tag} ${styles.tagAloe}`}>Live</span>
-              <span className={styles.tag}>React</span>
-              <span className={styles.tag}>Gemini AI</span>
-              <span className={styles.tag}>PostgreSQL</span>
-            </div>
-            <div className={styles.cardLinks}>
-              <a href="https://highlingua-api.onrender.com/" target="_blank" rel="noreferrer" className={styles.cardLink}>
-                Live demo
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M2 10 10 2M4 2h6v6" />
-                </svg>
-              </a>
-              <a href="https://github.com/vitygo/highlingua" target="_blank" rel="noreferrer" className={styles.cardLink}>
-                GitHub
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M2 10 10 2M4 2h6v6" />
-                </svg>
-              </a>
-            </div>
-          </article>
+          </div>
 
-          {/* Card 3 — Kanban */}
-          <article className={`${styles.card} reveal`}>
-            <p className={styles.cardNumber}>03</p>
-            <div className={styles.cardIcon}>
-              <img alt="" src="/kanbloom-white.png" />
-            </div>
-            <h3 className={styles.cardTitle}>Kanban Board</h3>
-            <p className={styles.cardDesc}>
-              First full-stack project. Drag and drop cards and columns, JWT auth with refresh tokens, dark/light theme. Monorepo with npm workspaces, deployed on Render.
-            </p>
-            <div className={styles.tags}>
-              <span className={`${styles.tag} ${styles.tagAloe}`}>Live</span>
-              <span className={styles.tag}>React</span>
-              <span className={styles.tag}>Express</span>
-              <span className={styles.tag}>PostgreSQL</span>
-            </div>
-            <div className={styles.cardLinks}>
-              <a href="https://kanban-web-moz5.onrender.com/" target="_blank" rel="noreferrer" className={styles.cardLink}>
-                Live demo
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M2 10 10 2M4 2h6v6" />
-                </svg>
-              </a>
-              <a href="https://github.com/vitygo/kanban-app" target="_blank" rel="noreferrer" className={styles.cardLink}>
-                GitHub
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M2 10 10 2M4 2h6v6" />
-                </svg>
-              </a>
-            </div>
-          </article>
+          <div className={`${styles.counter} reveal`} aria-live="polite">
+            <span className={styles.counterActiveWrap}>
+              <AnimatePresence initial={false}>
+                <motion.span
+                  key={active}
+                  className={styles.counterActive}
+                  initial={{ y: 16, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -16, opacity: 0 }}
+                  transition={reducedMotion ? { duration: 0 } : { duration: 0.3, ease: 'easeOut' }}
+                >
+                  {String(active + 1).padStart(2, '0')}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+            <span className={styles.counterTotal}>/ {String(COUNT).padStart(2, '0')}</span>
+          </div>
+        </div>
+      </div>
 
+      <div
+        className={`${styles.viewport} ${showCustomCursor ? styles.viewportNoCursor : ''}`}
+        ref={viewportRef}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Featured projects"
+        tabIndex={0}
+        onKeyDown={onKeyDown}
+        onMouseEnter={() => showCustomCursor && setCursorVisible(true)}
+        onMouseLeave={() => showCustomCursor && setCursorVisible(false)}
+        onMouseMove={showCustomCursor ? handlePointerMove : undefined}
+      >
+        {reducedMotion ? (
+          <div className={styles.staticTrack}>
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={index}
+                total={COUNT}
+                isActive={index === staticActive}
+                reducedMotion
+                x={x}
+                slideWidth={slideWidth}
+                articleRef={(el) => {
+                  cardRefs.current[index] = el
+                }}
+              />
+            ))}
+          </div>
+        ) : (
+          <motion.div
+            className={styles.track}
+            ref={trackRef}
+            drag="x"
+            dragConstraints={dragConstraints}
+            dragElastic={0.12}
+            dragMomentum={false}
+            onDragStart={onDragStart}
+            onDragEnd={onDragEnd}
+            style={{ x }}
+          >
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={index}
+                total={COUNT}
+                isActive={index === activeIndex}
+                reducedMotion={false}
+                x={x}
+                slideWidth={slideWidth}
+                onImageHoverChange={(hovering) => setCursorLabel(hovering ? 'view' : 'drag')}
+              />
+            ))}
+          </motion.div>
+        )}
+
+        {showCustomCursor && (
+          <motion.div
+            className={styles.cursor}
+            style={{
+              x: cursorSpringX,
+              y: cursorSpringY,
+              opacity: cursorVisible ? 1 : 0,
+              scale: cursorVisible ? 1 : 0.6,
+            }}
+          >
+            {cursorLabel === 'view' ? 'View →' : 'Drag'}
+          </motion.div>
+        )}
+      </div>
+
+      <div className={styles.inner}>
+        <div
+          className={styles.progressBar}
+          onClick={handleProgressClick}
+          onKeyDown={handleProgressKeyDown}
+          role="slider"
+          aria-label="Carousel progress"
+          aria-valuemin={1}
+          aria-valuemax={COUNT}
+          aria-valuenow={active + 1}
+          tabIndex={0}
+        >
+          {reducedMotion ? (
+            <div
+              className={styles.progressFill}
+              style={{ transform: `scaleX(${COUNT > 1 ? active / (COUNT - 1) : 1})` }}
+            />
+          ) : (
+            <motion.div className={styles.progressFill} style={{ scaleX: progress }} />
+          )}
         </div>
       </div>
     </section>

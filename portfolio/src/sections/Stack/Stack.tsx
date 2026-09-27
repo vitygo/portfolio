@@ -15,17 +15,18 @@ const stack: StackCategory[] = [
   {
     label: 'Frontend',
     items: [
-      { name: 'TypeScript', level: 4 },
+      { name: 'TypeScript', level: 5 },
       { name: 'React', level: 5 },
       { name: 'CSS Modules', level: 5 },
       { name: 'React Router', level: 3 },
       { name: 'React Hook Form', level: 3 },
+         { name: 'Next.js', level: 5 },
     ],
   },
   {
     label: 'Backend',
     items: [
-      { name: 'Node.js', level: 2 },
+      { name: 'Node.js', level: 3 },
       { name: 'Express', level: 2 },
       { name: 'PostgreSQL', level: 2 },
       { name: 'Prisma ORM', level: 2 },
@@ -39,8 +40,7 @@ const stack: StackCategory[] = [
       { name: 'Vite', level: 3 },
       { name: 'npm workspaces', level: 3 },
       { name: 'Render', level: 3 },
-      { name: 'Gemini AI', level: 3 },
-      { name: 'Claude Code / AI-driven dev', level: 4 },
+      { name: 'Claude Code / AI-driven dev', level: 5},
     ],
   },
 ]
