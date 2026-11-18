@@ -1,8 +1,7 @@
-import { useEffect, useState, useRef } from 'react'
+
 import styles from './Hero.module.css'
 import AsciiMobile from './AsciiMobile'
-import useRipple from '@/hooks/useRipple'
-import useMagnetic from '@/hooks/useMagnetic'
+
 
 const FULL_TEXT = ""
 
@@ -68,57 +67,12 @@ const THEMES: Record<Era, EraTheme> = {
 }
 
 function Hero() {
-  const [displayed, setDisplayed] = useState('')
-  const [done, setDone] = useState(false)
-  const [eraIndex, setEraIndex] = useState(4)
-  const ripple = useRipple()
-  const btnPrimary = useMagnetic<HTMLAnchorElement>()
-  const btnOutline = useMagnetic<HTMLAnchorElement>()
-  const sectionRef = useRef<HTMLElement>(null)
-  const era = ERA_ORDER[eraIndex]
-  const theme = THEMES[era]
-  const isModern = era === 'modern'
-
-  useEffect(() => {
-    let i = 0
-    const interval = setInterval(() => {
-      i++
-      setDisplayed(FULL_TEXT.slice(0, i))
-      if (i >= FULL_TEXT.length) {
-        clearInterval(interval)
-        setDone(true)
-      }
-    }, 40)
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) {
-            setEraIndex(4)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-  
-    if (sectionRef.current) observer.observe(sectionRef.current)
-  
-    return () => observer.disconnect()
-  }, [])
-
-  const lines = displayed.split('\n')
 
   return (
     <section
-      ref={sectionRef}
       className={styles.hero}
-      style={{ transition: 'background 0.5s ease', ...theme.section }}
     >
-      {isModern && <div className={styles.gridBg} />}
-      {isModern && <div className={styles.glow} />}
+ 
 
      
 
