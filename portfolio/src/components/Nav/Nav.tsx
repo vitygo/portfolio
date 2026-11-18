@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from './Nav.module.css'
 import useRipple from '@/hooks/useRipple'
 
-const sections = []
+const sections = ["", ""]
 
 function Nav() {
   const [active, setActive] = useState('')
