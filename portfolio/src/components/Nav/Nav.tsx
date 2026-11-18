@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from './Nav.module.css'
 import useRipple from '@/hooks/useRipple'
 
-const sections = ['projects', 'experience', 'stack', 'community']
+const sections = []
 
 function Nav() {
   const [active, setActive] = useState('')
@@ -31,11 +31,8 @@ function Nav() {
   return (
     <nav className={styles.nav}>
       <div className={styles.logoWrap}>
-        <a href="#" className={styles.logo}>VK</a>
-        <span className={styles.badge}>
-          <span className={styles.badgeDot} />
-          Open to work
-        </span>
+        <a href="#" className={styles.logo}>Viktor Kobylianskyi</a>
+        
       </div>
 
       <ul className={styles.links}>
@@ -51,10 +48,7 @@ function Nav() {
         ))}
       </ul>
 
-      <div className={styles.cta}>
-        <a href="#contact" className={styles.btnOutline} onMouseDown={ripple}>Say hello</a>
-        <a href="mailto:vitygocanal@gmail.com" className={styles.btnPrimary} onMouseDown={ripple}>Hire me</a>
-      </div>
+ 
     </nav>
   )
 }

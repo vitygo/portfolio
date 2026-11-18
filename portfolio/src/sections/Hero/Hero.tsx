@@ -4,7 +4,7 @@ import AsciiMobile from './AsciiMobile'
 import useRipple from '@/hooks/useRipple'
 import useMagnetic from '@/hooks/useMagnetic'
 
-const FULL_TEXT = "Building things\nthat actually work."
+const FULL_TEXT = ""
 
 type Era = 'geocities' | 'early' | 'web2' | 'flat' | 'modern'
 const ERA_ORDER: Era[] = ['geocities', 'early', 'web2', 'flat', 'modern']
@@ -120,101 +120,13 @@ function Hero() {
       {isModern && <div className={styles.gridBg} />}
       {isModern && <div className={styles.glow} />}
 
-      {/* Time machine slider — top center */}
-      <div className={styles.timeMachine}>
-        <div className={styles.tmLabels}>
-          <span>1996</span>
-          <span>2000</span>
-          <span>2008</span>
-          <span>2015</span>
-          <span>2026</span>
-        </div>
-        <input
-          type="range"
-          min={0}
-          max={4}
-          step={1}
-          value={eraIndex}
-          onChange={e => setEraIndex(parseInt(e.target.value))}
-          className={styles.tmSlider}
-        />
-        {/* <p className={styles.tmLabel}>{theme.label}</p> */}
-      </div>
+     
 
-      <div className={styles.layout}>
-        <div className={styles.content}>
-          <p
-            className={`${styles.eyebrow} reveal`}
-            style={{ transition: 'all 0.4s ease', ...theme.eyebrow }}
-          >
-            Viktor Kobylianskyi — Frontend Engineer
-          </p>
-
-          <h1
-            className={styles.headline}
-            style={{ transition: 'all 0.4s ease', ...theme.headline }}
-          >
-            {lines.map((line, i) => (
-              <span key={i} style={{ display: 'block' }}>
-                {line}
-                {isModern && i === lines.length - 1 && !done && (
-                  <span className={styles.cursor}>|</span>
-                )}
-              </span>
-            ))}
-          </h1>
-
-          <p
-            className={styles.sub}
-            style={{
-              transition: isModern ? 'opacity 0.8s ease 0.2s, all 0.4s ease' : 'all 0.4s ease',
-              opacity: isModern ? (done ? 1 : 0) : 1,
-              ...theme.sub,
-            }}
-          >
-            I build full-stack apps, co-host Meet.js Kraków, and ship things before they're perfect
-          </p>
-
-          <div
-            className={styles.actions}
-            style={{
-              transition: isModern ? 'opacity 0.8s ease 0.4s' : 'all 0.4s ease',
-              opacity: isModern ? (done ? 1 : 0) : 1,
-            }}
-          >
-            <a
-              ref={isModern ? btnPrimary : undefined}
-              href="#projects"
-              className={styles.btnPrimary}
-              onMouseDown={ripple}
-              style={{ transition: 'all 0.4s ease', ...theme.btnPrimary }}
-            >
-              View projects
-            </a>
-            
-            <a
-              ref={isModern ? btnOutline : undefined}
-              href="#community"
-              className={styles.btnOutline}
-              onMouseDown={ripple}
-              style={{ transition: 'all 0.4s ease', ...theme.btnOutline }}
-            >
-              Community →
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.asciiWrap}>
+    <div className={styles.asciiWrap}>
           <AsciiMobile />
         </div>
-      </div>
 
-      <div className={styles.scrollHint}>
-        scroll
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M7 2v10M3.5 8.5 7 12l3.5-3.5" />
-        </svg>
-      </div>
+     
     </section>
   )
 }

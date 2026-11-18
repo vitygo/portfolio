@@ -26,13 +26,11 @@ function HomePage() {
       <Noise />
       <main>
         <Hero />
-        <Projects />
-        <Experience />
-        <Stack />
-        <GitHub />
-        <BugSquash />
-        <Community />
-        <Contact />
+     
+ 
+   
+       
+   
       </main>
       <Footer />
     </>
